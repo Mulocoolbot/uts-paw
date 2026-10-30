@@ -12,8 +12,8 @@ export default function Beranda() {
       <div className="hero-beranda">
         <h1>Koleksi Tanaman Hias</h1>
         <p className="deskripsi-katalog">
-          Katalog interaktif untuk merawat dan mengelola berbagai tanaman hias
-          favorit Anda, mulai dari jenis daun, bunga, sukulen, hingga tanaman gantung.
+          Aplikasi katalog untuk mencatat dan mengelola koleksi tanaman hias
+          beserta jadwal penyiraman dan kebutuhan cahayanya.
         </p>
       </div>
 

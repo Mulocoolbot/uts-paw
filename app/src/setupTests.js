@@ -7,7 +7,6 @@ afterEach(() => {
   localStorage.clear()
 })
 
-// jsdom tidak punya matchMedia; beberapa pustaka UI (mis. antd) membutuhkannya.
 if (!window.matchMedia) {
   window.matchMedia = (query) => ({
     matches: false,

@@ -4,6 +4,9 @@ export default function Tentang() {
   return (
     <section className="halaman-tentang">
       <h2>Tentang Pengembang & Aplikasi</h2>
+      <p className="deskripsi-katalog">
+        Aplikasi katalog untuk mencatat dan mengelola koleksi tanaman hias beserta identitas pengembang.
+      </p>
 
       <div className="kartu-profil">
         <dl className="daftar-profil">

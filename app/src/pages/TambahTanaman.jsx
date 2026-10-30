@@ -10,7 +10,7 @@ export default function TambahTanaman() {
   const [kategori, setKategori] = useState('Daun')
   const [namaLatin, setNamaLatin] = useState('')
   const [frekuensiSiram, setFrekuensiSiram] = useState('')
-  const [kebutuhanCahaya, setKebutuhanCahaya] = useState('')
+  const [kebutuhanCahaya, setKebutuhanCahaya] = useState('sedang')
   const [pesanError, setPesanError] = useState('')
 
   const handleSubmit = (e) => {
@@ -25,7 +25,7 @@ export default function TambahTanaman() {
       kategori: kategori || 'Daun',
       namaLatin: namaLatin.trim() || '-',
       frekuensiSiram: frekuensiSiram.trim() || '2x seminggu',
-      kebutuhanCahaya: kebutuhanCahaya.trim() || 'sedang',
+      kebutuhanCahaya: kebutuhanCahaya || 'sedang',
     })
 
     navigate('/koleksi')
@@ -94,13 +94,15 @@ export default function TambahTanaman() {
 
         <div className="form-grup">
           <label htmlFor="input-kebutuhan-cahaya">Kebutuhan Cahaya</label>
-          <input
+          <select
             id="input-kebutuhan-cahaya"
-            type="text"
             value={kebutuhanCahaya}
             onChange={(e) => setKebutuhanCahaya(e.target.value)}
-            placeholder="Contoh: sedang"
-          />
+          >
+            <option value="sedang">Sedang</option>
+            <option value="teduh">Teduh</option>
+            <option value="penuh">Penuh</option>
+          </select>
         </div>
 
         <div className="form-aksi">

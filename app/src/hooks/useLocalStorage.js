@@ -17,9 +17,7 @@ export default function useLocalStorage(kunci, nilaiAwal) {
       } else {
         window.localStorage.setItem(kunci, JSON.stringify(nilai))
       }
-    } catch {
-      // Abaikan kendala akses localStorage
-    }
+    } catch {}
   }, [kunci, nilai])
 
   const perbaruiNilai = useCallback((nilaiBaru) => {
@@ -31,9 +29,7 @@ export default function useLocalStorage(kunci, nilaiAwal) {
         } else {
           window.localStorage.setItem(kunci, JSON.stringify(hasil))
         }
-      } catch {
-        // Abaikan kendala akses localStorage
-      }
+      } catch {}
       return hasil
     })
   }, [kunci])

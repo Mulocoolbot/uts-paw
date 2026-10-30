@@ -293,18 +293,54 @@ body {
 .input-cari:focus {
   border-color: var(--warna-utama);
   box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
-  background: #ffffff;
+  background-color: #ffffff;
 }
 
-.select-kategori {
-  padding: 0.75rem 1rem;
+select,
+.select-kategori,
+.input-select,
+.filter-select,
+.panel-filter select,
+form select,
+.form-grup select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%232d4a3e' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 1rem;
+  padding: 0.65rem 2.5rem 0.65rem 0.9rem;
+  cursor: pointer;
   border: 1px solid var(--warna-garis);
   border-radius: 8px;
   font-size: 1rem;
-  background: #ffffff;
   color: var(--warna-teks);
-  cursor: pointer;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+select:hover,
+.select-kategori:hover,
+.input-select:hover,
+.filter-select:hover,
+.panel-filter select:hover,
+form select:hover,
+.form-grup select:hover {
+  background-color: #fbfdfc;
+}
+
+select:focus,
+.select-kategori:focus,
+.input-select:focus,
+.filter-select:focus,
+.panel-filter select:focus,
+form select:focus,
+.form-grup select:focus {
+  border-color: var(--warna-utama);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+  background-color: #ffffff;
 }
 
 /* Grid Koleksi & Kartu Tanaman */
@@ -364,9 +400,13 @@ body {
 }
 
 .badge-kategori::before {
-  content: '●';
-  margin-right: 0.35rem;
-  font-size: 0.6rem;
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+  margin-right: 0.4rem;
 }
 
 .info-perawatan {
@@ -475,19 +515,19 @@ body {
   color: var(--warna-teks);
 }
 
-.form-grup input,
-.form-grup select {
+.form-grup input {
   padding: 0.75rem 1rem;
   border: 1px solid var(--warna-garis);
   border-radius: 8px;
   font-size: 1rem;
   outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-grup input:focus,
-.form-grup select:focus {
+.form-grup input:focus {
   border-color: var(--warna-utama);
   box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+  background-color: #ffffff;
 }
 
 #input-judul,

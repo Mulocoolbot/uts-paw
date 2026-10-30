@@ -12,9 +12,7 @@ export function KoleksiProvider({ children }) {
         const parsed = JSON.parse(tersimpan)
         return !(Array.isArray(parsed) && parsed.length > 0)
       }
-    } catch {
-      // Abaikan galat inisialisasi state
-    }
+    } catch {}
     return true
   })
   const [error, setError] = useState(null)
