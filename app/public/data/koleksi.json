@@ -1,10 +1,98 @@
 [
   {
     "id": "1",
-    "judul": "Contoh item pertama",
-    "kategori": "Contoh",
-    "fieldTema1": "ganti sesuai field tema",
-    "fieldTema2": 0,
-    "fieldTema3": "ganti sesuai field tema"
+    "judul": "Monstera Deliciosa",
+    "kategori": "Daun",
+    "namaLatin": "Monstera deliciosa",
+    "frekuensiSiram": "2x seminggu",
+    "kebutuhanCahaya": "sedang"
+  },
+  {
+    "id": "2",
+    "judul": "Aglonema Red Sumatra",
+    "kategori": "Daun",
+    "namaLatin": "Aglaonema rotundum cv.",
+    "frekuensiSiram": "2x seminggu",
+    "kebutuhanCahaya": "teduh"
+  },
+  {
+    "id": "3",
+    "judul": "Calathea Orbifolia",
+    "kategori": "Daun",
+    "namaLatin": "Calathea orbifolia",
+    "frekuensiSiram": "3x seminggu",
+    "kebutuhanCahaya": "teduh"
+  },
+  {
+    "id": "4",
+    "judul": "Anggrek Bulan",
+    "kategori": "Bunga",
+    "namaLatin": "Phalaenopsis amabilis",
+    "frekuensiSiram": "2x seminggu",
+    "kebutuhanCahaya": "sedang"
+  },
+  {
+    "id": "5",
+    "judul": "Adenium Obesum",
+    "kategori": "Bunga",
+    "namaLatin": "Adenium obesum",
+    "frekuensiSiram": "1x seminggu",
+    "kebutuhanCahaya": "penuh"
+  },
+  {
+    "id": "6",
+    "judul": "Begonia Maculata",
+    "kategori": "Bunga",
+    "namaLatin": "Begonia maculata",
+    "frekuensiSiram": "2x seminggu",
+    "kebutuhanCahaya": "sedang"
+  },
+  {
+    "id": "7",
+    "judul": "Lidah Mertua",
+    "kategori": "Sukulen",
+    "namaLatin": "Sansevieria trifasciata",
+    "frekuensiSiram": "1x seminggu",
+    "kebutuhanCahaya": "penuh"
+  },
+  {
+    "id": "8",
+    "judul": "Echeveria Elegans",
+    "kategori": "Sukulen",
+    "namaLatin": "Echeveria elegans",
+    "frekuensiSiram": "1x seminggu",
+    "kebutuhanCahaya": "penuh"
+  },
+  {
+    "id": "9",
+    "judul": "Haworthia Zebra",
+    "kategori": "Sukulen",
+    "namaLatin": "Haworthiopsis fasciata",
+    "frekuensiSiram": "1x seminggu",
+    "kebutuhanCahaya": "sedang"
+  },
+  {
+    "id": "10",
+    "judul": "Sirih Gading",
+    "kategori": "Gantung",
+    "namaLatin": "Epipremnum aureum",
+    "frekuensiSiram": "2x seminggu",
+    "kebutuhanCahaya": "sedang"
+  },
+  {
+    "id": "11",
+    "judul": "Dischidia Geri",
+    "kategori": "Gantung",
+    "namaLatin": "Dischidia oiantha",
+    "frekuensiSiram": "3x seminggu",
+    "kebutuhanCahaya": "sedang"
+  },
+  {
+    "id": "12",
+    "judul": "Philodendron Birkin",
+    "kategori": "Gantung",
+    "namaLatin": "Philodendron Birkin",
+    "frekuensiSiram": "2x seminggu",
+    "kebutuhanCahaya": "sedang"
   }
 ]
