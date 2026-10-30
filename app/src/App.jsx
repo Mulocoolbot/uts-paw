@@ -1,36 +1,33 @@
 import { Route, Routes } from 'react-router-dom'
-import mahasiswa from '../mahasiswa.json'
-
-// Titik awal ujian. Baca soal lengkap di https://uts-paw.mhabibalgifari.web.id/soal
-// dan contoh setiap kode yang diminta di https://uts-paw.mhabibalgifari.web.id/contoh
-// Rute wajib: /, /koleksi, /koleksi/:id, /tambah, /statistik, /tentang, dan *.
-// Provider Context diletakkan di dalam komponen App ini.
-
-function Beranda() {
-  return (
-    <main>
-      <h1>Ujian Tengah Semester Pengembangan Aplikasi Web</h1>
-      <p>
-        {mahasiswa.nama || 'Nama belum diisi'} ({mahasiswa.nim || 'NIM belum diisi'})
-      </p>
-    </main>
-  )
-}
-
-function TidakDitemukan() {
-  return (
-    <main>
-      <h1>404</h1>
-      <p>Halaman tidak ditemukan.</p>
-    </main>
-  )
-}
+import { KoleksiProvider } from './context/KoleksiContext'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import Beranda from './pages/Beranda'
+import DaftarKoleksi from './pages/DaftarKoleksi'
+import DetailTanaman from './pages/DetailTanaman'
+import TambahTanaman from './pages/TambahTanaman'
+import Statistik from './pages/Statistik'
+import Tentang from './pages/Tentang'
+import TidakDitemukan from './pages/TidakDitemukan'
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Beranda />} />
-      <Route path="*" element={<TidakDitemukan />} />
-    </Routes>
+    <KoleksiProvider>
+      <div className="wadah-aplikasi">
+        <Navbar />
+        <main id="konten-utama" className="konten-utama">
+          <Routes>
+            <Route path="/" element={<Beranda />} />
+            <Route path="/koleksi" element={<DaftarKoleksi />} />
+            <Route path="/koleksi/:id" element={<DetailTanaman />} />
+            <Route path="/tambah" element={<TambahTanaman />} />
+            <Route path="/statistik" element={<Statistik />} />
+            <Route path="/tentang" element={<Tentang />} />
+            <Route path="*" element={<TidakDitemukan />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </KoleksiProvider>
   )
 }
