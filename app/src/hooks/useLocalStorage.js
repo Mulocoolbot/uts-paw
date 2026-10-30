@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export default function useLocalStorage(kunci, nilaiAwal) {
   const [nilai, setNilai] = useState(() => {
@@ -22,7 +22,7 @@ export default function useLocalStorage(kunci, nilaiAwal) {
     }
   }, [kunci, nilai])
 
-  const perbaruiNilai = (nilaiBaru) => {
+  const perbaruiNilai = useCallback((nilaiBaru) => {
     setNilai((prev) => {
       const hasil = typeof nilaiBaru === 'function' ? nilaiBaru(prev) : nilaiBaru
       try {
@@ -36,7 +36,7 @@ export default function useLocalStorage(kunci, nilaiAwal) {
       }
       return hasil
     })
-  }
+  }, [kunci])
 
   return [nilai, perbaruiNilai]
 }

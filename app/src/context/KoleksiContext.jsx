@@ -5,18 +5,32 @@ const KoleksiContext = createContext(null)
 
 export function KoleksiProvider({ children }) {
   const [koleksi, setKoleksi] = useLocalStorage('koleksi_tanaman_paw', null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(() => {
+    try {
+      const tersimpan = window.localStorage.getItem('koleksi_tanaman_paw')
+      if (tersimpan) {
+        const parsed = JSON.parse(tersimpan)
+        return !(Array.isArray(parsed) && parsed.length > 0)
+      }
+    } catch {
+      // Abaikan galat inisialisasi state
+    }
+    return true
+  })
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    let abaikan = false
+
     async function muatDataAwal() {
-      setLoading(true)
       try {
         const response = await fetch(`${import.meta.env.BASE_URL}data/koleksi.json`)
         if (!response.ok) {
           throw new Error(`Gagal memuat data (status ${response.status})`)
         }
         const dataJson = await response.json()
+
+        if (abaikan) return
 
         const tersimpan = window.localStorage.getItem('koleksi_tanaman_paw')
         let dataTersimpan = null
@@ -35,19 +49,29 @@ export function KoleksiProvider({ children }) {
         }
         setError(null)
       } catch (err) {
-        setError(err.message || 'Gagal memuat data koleksi')
+        if (!abaikan) {
+          setError(err.message || 'Gagal memuat data koleksi')
+        }
       } finally {
-        setLoading(false)
+        if (!abaikan) {
+          setLoading(false)
+        }
       }
     }
 
     muatDataAwal()
+
+    return () => {
+      abaikan = true
+    }
   }, [setKoleksi])
 
   const tambahTanaman = (itemBaru) => {
-    const tanamanBaru = { id: String(Date.now()), ...itemBaru }
+    let tanamanBaru = null
     setKoleksi((prev) => {
       const daftar = Array.isArray(prev) ? prev : []
+      const idBaru = String(Math.max(0, ...daftar.map((t) => Number(t.id) || 0)) + 1)
+      tanamanBaru = { id: idBaru, ...itemBaru }
       return [...daftar, tanamanBaru]
     })
     return tanamanBaru
@@ -56,8 +80,20 @@ export function KoleksiProvider({ children }) {
   const hapusTanaman = (id) => {
     setKoleksi((prev) => {
       const daftar = Array.isArray(prev) ? prev : []
-      return daftar.filter((item) => String(item.id) !== String(id))
+      return daftar.filter((t) => String(t.id) !== String(id))
     })
+  }
+
+  const ubahTanaman = (id, dataBaru) => {
+    setKoleksi((prev) => {
+      const daftar = Array.isArray(prev) ? prev : []
+      return daftar.map((t) => (String(t.id) === String(id) ? { ...t, ...dataBaru } : t))
+    })
+  }
+
+  const dapatkanTanamanBerdasarkanId = (id) => {
+    const daftar = Array.isArray(koleksi) ? koleksi : []
+    return daftar.find((t) => String(t.id) === String(id))
   }
 
   const value = {
@@ -69,6 +105,9 @@ export function KoleksiProvider({ children }) {
     tambah: tambahTanaman,
     hapusTanaman,
     hapus: hapusTanaman,
+    ubahTanaman,
+    ubah: ubahTanaman,
+    dapatkanTanamanBerdasarkanId,
   }
 
   return (
@@ -78,6 +117,7 @@ export function KoleksiProvider({ children }) {
   )
 }
 
+// oxlint-disable-next-line react/only-export-components
 export function useKoleksi() {
   const context = useContext(KoleksiContext)
   if (!context) {
